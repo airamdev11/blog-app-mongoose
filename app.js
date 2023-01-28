@@ -27,6 +27,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+
+
 let newPostArray = [];
 
 let postsInDbRef = db.collection('posts');
@@ -38,8 +40,11 @@ let postsInDbRef = db.collection('posts');
     });
   });
 
+app.get("/", (req,res)=>{
+  res.render('start');
+});
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   const postsInDbRef = db.collection('posts');
   const postsInDb = postsInDbRef.get().then((documents) => {
     newPostArray = [];
@@ -109,7 +114,7 @@ app.post("/compose", (req, res) => {
     documents.forEach(doc => {
       newDocument = doc.data();
       newPostArray.push(newDocument);
-      res.redirect("/");
+      res.redirect("/home");
     });
   });
 
