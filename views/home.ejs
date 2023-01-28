@@ -1,0 +1,24 @@
+<%- include("./partials/header") -%>
+
+    <h1>Home</h1>
+    <p>
+        <%= contentList[0] %>
+    </p>
+    <% newPosts.forEach(post=> { %>
+        <h1>
+            <%= post.title %>
+        </h1>
+
+        <% if (post.text.length>= 100) { %>
+            <p>
+                <%= post.text.substring(0, 100) + "..." %>
+                <a href='<%= "/posts/" + post.formattedTitle %>'> Read More</a>
+            </p>
+            
+            
+        <% } else{ %>
+                <%= post.text%>
+        <% } %>
+    <% }) %>
+
+<%- include("./partials/footer") -%>
