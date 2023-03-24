@@ -9,15 +9,15 @@
             <%= post.title %>
         </h1>
 
-        <% if (post.text.length>= 100) { %>
+        <% if (post.description.length>= 25) { %>
             <p>
-                <%= post.text.substring(0, 100) + "..." %>
-                <a href='<%= "/posts/" + post.formattedTitle %>'> Read More</a>
+                <%= post.description.substring(0, 20) + "..." %>
+                <a href='<%= "/posts/" + post.title %>'> Read More</a>
             </p>
             
             
         <% } else{ %>
-                <%= post.text%>
+                <%= post.description%>
         <% } %>
     <% }) %>
 
